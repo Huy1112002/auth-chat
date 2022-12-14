@@ -77,7 +77,7 @@ io.on('connection', async (socket) => {
     socket.on('chat message', data => {
         if(data.socket_id != null) io.to(data.socket_id).emit('chat message', { message: data.message, socket_id: socket.id});
 
-        db.query("SELECT usename FROM users_id WHERE socket_id = " + data.socket_id, function (err, result) {
+        db.query("SELECT username FROM user_chat WHERE socket_id = " + data.socket_id, function (err, result) {
             db.query("INSERT INTO messages VALUES (" + decoded.username + ", " + result[0] + "," + data.message + + "," + data.time + ")");
         });
     });
