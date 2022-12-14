@@ -46,7 +46,7 @@ const login = async (req, res) => {
     }
 }
 const register = async (req, res) => {
-    const {username , password , name , role , status , email , phone_num} = req;
+    const {username , password , name , role , status , email , phone_num} = req.body;
 
     db.query('SELECT username from employee WHERE username = ?', [username], async (err, results) => {
         if (err) {
@@ -102,7 +102,7 @@ const logout = async (req, res) => {
     const decoded = await promisify(jwt.verify)(req.cookies.userSave,
         process.env.JWT_SECRET
     );
-    db.query("UPDATE users SET socket_id = " + null + "FROM user_chat WHERE username = " + decoded.username);
+    db.query("UPDATE user_chat SET socket_id = " + null + "WHERE username = " + decoded.username);
     res.cookie('userSave', 'logout', {
         expires: new Date(Date.now() + 2 * 1000),
         httpOnly: true
