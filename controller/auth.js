@@ -1,4 +1,4 @@
-const {login, register, isLoggedIn, logout} = require('../model/auth');
+const {login, register, isLoggedIn, logout} = require('../models/auth');
 
 const Login = function(req, res){
     login(req, (err, data) => {
