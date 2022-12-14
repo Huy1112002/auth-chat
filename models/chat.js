@@ -25,7 +25,7 @@ const getAllUser = async(result) => {
 
 const getChatMessagesOfUser = async(username ,result) => {
     var pool = await conn
-    var sqlString = 'SELECT * FROM messages WHERE username = @username OR des_user = @username';
+    var sqlString = 'SELECT * FROM messages WHERE src_user = @username OR des_user = @username';
     return await pool.request()
     .input('username', sql.varchar(50), SSN)
     .query(sqlString, function(err, data){
