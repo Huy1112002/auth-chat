@@ -1,4 +1,4 @@
-const{getAllUser, getChatMessagesOfUser} = require('../model/chat.js');
+const{getAllUser, getChatMessagesOfUser} = require('../models/chat.js');
 
 const GetAllUser = function(req,res){
     getAllUser((err, data) => {
