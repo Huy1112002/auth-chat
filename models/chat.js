@@ -11,7 +11,7 @@ const db = mysql.createConnection({
 });
 
 const getAllUser = async(result) => {
-    var pool = await conn
+    var pool = await db
     var sqlString = "SELECT * FROM user_chat";
     return await pool.request()
     .query(sqlString, function(err, data){
@@ -24,7 +24,7 @@ const getAllUser = async(result) => {
 }
 
 const getChatMessagesOfUser = async(username ,result) => {
-    var pool = await conn
+    var pool = await db
     var sqlString = 'SELECT * FROM messages WHERE src_user = @username OR des_user = @username';
     return await pool.request()
     .input('username', sql.varchar(50), username)
