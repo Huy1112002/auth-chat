@@ -60,7 +60,7 @@ io.on('connection', async (socket) => {
     );
 
     db.query("UPDATE user_chat SET socket_id = '" + socket.id + "' WHERE username = " + decoded.username);
-    db.query("SELECT * FROM users_id, user", function (err, result) {
+    db.query("SELECT * FROM user_chat", function (err, result) {
         result.forEach(element => {
             users.push(element);
         });
